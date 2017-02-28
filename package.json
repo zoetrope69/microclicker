@@ -1,0 +1,10 @@
+{
+  "name": "microclicker",
+  "version": "1.0.0",
+  "description": "use the bbc:microbit as a slide clicker",
+  "main": "main.js",
+  "dependencies": {
+    "bbc-microbit": "^0.1.0",
+    "robotjs": "^0.4.5"
+  }
+}
