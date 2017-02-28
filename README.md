@@ -1,6 +1,6 @@
-# microclicker
+# micro:clicker
 
-_🔎🖱️ use the bbc:microbit as a slide clicker_
+_🔎🖱️ use the bbc micro:bit as a slide clicker_
 
 *here's a vid of it working: https://youtu.be/3ho0ime_nwQ*
 
