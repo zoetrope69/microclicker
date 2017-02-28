@@ -2,6 +2,8 @@
 
 _🔎🖱️ use the bbc:microbit as a slide clicker_
 
+*here's a vid of it working: https://youtu.be/3ho0ime_nwQ*
+
 ## installation
 
 1. [follow instructions to install `bbc-microbit`](https://github.com/sandeepmistry/node-bbc-microbit#prerequisites)
