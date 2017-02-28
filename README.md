@@ -10,6 +10,8 @@ _🔎🖱️ use the bbc:microbit as a slide clicker_
 ## usage
 
 1. turn microbit off
-2. run it `sudo node main.js` (_you'll probably need `sudo` to get access to bluetooth_)
+2. run `sudo node main.js` (_you'll probably need `sudo` to get access to bluetooth_)
 3. turn microbit on
-4. press buttons to move slides, turn upside down to reset counter
+4. you should see a pattern
+
+> press buttons to move slides, you should see a counter to help reflect your position in your slides. turn the microbit upside down to reset the counter

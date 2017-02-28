@@ -3,7 +3,7 @@ const MATRIX_HEIGHT = 5;
 const MATRIX_SIZE = MATRIX_WIDTH * MATRIX_HEIGHT;
 
 function leadingZero(hex){
-  return ('000000000' + hex).substr(-2);
+  return ('00' + hex).substr(-2);
 }
 
 function binaryStringToHexString(binaryString) {
