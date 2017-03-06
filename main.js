@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 const BBCMicrobit = require('bbc-microbit');
 const robot = require('robotjs');
 
@@ -9,31 +11,31 @@ const {
   MATRIX_SIZE
 } = require('./draw');
 
-const DEBUG = false; // toggle console info
-const PERIOD = 2000; // time to check accelerometer in ms
+let slideCount = 0;
+const heldButtons = {
+  left: false,
+  right: false
+};
+
 const BUTTON_ACTIONS = ['released', 'pressed', 'held'];
 
 function connectToMicrobit() {
-  DEBUG && console.info('scanning for microbit');
+  console.info('Scanning for micro:bit...');
   BBCMicrobit.discover(microbit => {
-    DEBUG && console.info(`discovered microbit: id = ${microbit.id}, address = ${microbit.address}`);
+    console.info(`Found the micro:bit! (id = ${microbit.id}, address = ${microbit.address})`);
 
     microbit.on('disconnect', _ => {
-      DEBUG && console.info('microbit disconnected!');
+      console.info('micro:bit disconnected.');
     });
 
-    DEBUG && console.info('connecting to microbit');
+    console.info('Connecting to micro:bit');
     microbit.connectAndSetUp(_ => {
-      DEBUG && console.info('connected to microbit');
+      console.info('micro:bit connected!');
 
       // listen for button presses
       microbit.on('buttonAChange', value => handleButton(microbit, 'left', BUTTON_ACTIONS[value]));
       microbit.on('buttonBChange', value => handleButton(microbit, 'right', BUTTON_ACTIONS[value]));
       microbit.subscribeButtons();
-
-      // poll the accelerometer
-      microbit.on('accelerometerChange', (x, y, z) => handleAccelerometer(microbit, x, y, z));
-      microbit.writeAccelerometerPeriod(PERIOD, microbit.subscribeAccelerometer());
 
       // show a pattern on load
       microbit.writeLedMatrixState(drawPattern());
@@ -41,7 +43,6 @@ function connectToMicrobit() {
   });
 }
 
-let slideCount = 0;
 function handleSlideCount(type) {
   if (type === 'left') {
     if (slideCount > 0) {
@@ -55,9 +56,10 @@ function handleSlideCount(type) {
 }
 
 function handleButton(microbit, direction, action) {
-  DEBUG && console.info(`button ${direction} ${action}`);
+  console.info(`\nButton ${direction} ${action}`);
 
   if (action === 'released') {
+    heldButtons[direction] = false;
     microbit.writeLedMatrixState(drawProgess(slideCount));
   }
 
@@ -66,14 +68,23 @@ function handleButton(microbit, direction, action) {
     handleSlideCount(direction);
     microbit.writeLedMatrixState(drawArrow(direction));
   }
-}
 
-function handleAccelerometer(microbit, x, y, z) {
-  const upsideDown = z > 0.9;
-  if (upsideDown) {
-    DEBUG && console.info('upside down');
-    slideCount = 0;
-    microbit.writeLedMatrixState(drawPattern());
+  if (action === 'held') {
+    heldButtons[direction] = true;
+
+    // if both buttons are held
+    if (heldButtons['left'] && heldButtons['right']) {
+      console.log('Disconnecting micro:bit!');
+      microbit.writeLedMatrixState(clear());
+
+      // disconnect
+      setTimeout(_ => {
+        microbit.disconnect(_ => {
+          console.log('Bye-bye');
+          process.exit(1);
+        });
+      }, 500);
+    }
   }
 }
 
