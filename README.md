@@ -1,4 +1,5 @@
 # micro:clicker
+![npm version 1.0.6](https://img.shields.io/npm/v/microclicker.svg)
 
 _🔎🖱️ use the bbc micro:bit as a slide clicker_
 
