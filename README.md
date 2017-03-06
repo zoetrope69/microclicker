@@ -7,9 +7,41 @@ _🔎🖱️ use the bbc micro:bit as a slide clicker_
 ## installation
 
 1. [follow instructions to install `bbc-microbit`](https://github.com/sandeepmistry/node-bbc-microbit#prerequisites)
-2. install dependancies `npm install` or `yarn`
+2. install microclicker globally with npm
+```
+npm install microclicker --global
+```
 
 ## usage
+
+Use the command `microclicker` to start scanning for micro:bits. You should see something like the following:
+
+```
+$ microclicker
+🔎🖱  micro:clicker
+
+🔮  Scanning for micro:bit...
+🤖  micro:bit found!
+
+🔌  Connecting to micro:bit
+🤖  micro:bit connected!
+     ➡️  Press right arrow to move right.
+
+     ⬅️  Press left arrow to move left.
+
+   ⬅️ ➡️ ️ Hold both buttons to disconnect.
+```
+
+> i'm also using the [mi:power accessory](https://www.amazon.co.uk/MI-power-board-BBC-micro/dp/B01JP47T46) to make it more compact!
+
+## development
+
+### installation
+
+1. [follow instructions to install `bbc-microbit`](https://github.com/sandeepmistry/node-bbc-microbit#prerequisites)
+2. install dependancies `npm install` or `yarn`
+
+### usage
 
 1. turn microbit off
 2. run `sudo node main.js` (_you'll probably need `sudo` to get access to bluetooth_)

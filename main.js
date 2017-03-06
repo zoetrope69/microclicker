@@ -19,18 +19,23 @@ const heldButtons = {
 
 const BUTTON_ACTIONS = ['released', 'pressed', 'held'];
 
+console.info('🔎 🖱️  micro:clicker\n');
+
 function connectToMicrobit() {
-  console.info('Scanning for micro:bit...');
+  console.info('🔮  Scanning for micro:bit...');
   BBCMicrobit.discover(microbit => {
-    console.info(`Found the micro:bit! (id = ${microbit.id}, address = ${microbit.address})`);
+    console.info(`🤖  micro:bit found!\n`);
 
     microbit.on('disconnect', _ => {
-      console.info('micro:bit disconnected.');
+      console.info('🤖  micro:bit disconnected.an');
     });
 
-    console.info('Connecting to micro:bit');
+    console.info('🔌  Connecting to micro:bit');
     microbit.connectAndSetUp(_ => {
-      console.info('micro:bit connected!');
+      console.info('🤖  micro:bit connected!\n');
+      console.info('     ➡️️  Press right arrow to move right.');
+      console.info('     ⬅️  Press left arrow to move left.');
+      console.info('   ⬅️ ➡️ ️ Hold both buttons to disconnect.\n');
 
       // listen for button presses
       microbit.on('buttonAChange', value => handleButton(microbit, 'left', BUTTON_ACTIONS[value]));
@@ -56,7 +61,7 @@ function handleSlideCount(type) {
 }
 
 function handleButton(microbit, direction, action) {
-  console.info(`\nButton ${direction} ${action}`);
+  // console.info(`⏺️  Button ${direction} ${action}\n`);
 
   if (action === 'released') {
     heldButtons[direction] = false;
@@ -74,13 +79,13 @@ function handleButton(microbit, direction, action) {
 
     // if both buttons are held
     if (heldButtons['left'] && heldButtons['right']) {
-      console.log('Disconnecting micro:bit!');
+      console.log('\n🔌  Disconnecting micro:bit!');
       microbit.writeLedMatrixState(clear());
 
       // disconnect
       setTimeout(_ => {
         microbit.disconnect(_ => {
-          console.log('Bye-bye');
+          console.log('👋  Bye-bye\n');
           process.exit(1);
         });
       }, 500);
