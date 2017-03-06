@@ -80,10 +80,10 @@ function handleButton(microbit, direction, action) {
     // if both buttons are held
     if (heldButtons['left'] && heldButtons['right']) {
       console.log('\n🔌  Disconnecting micro:bit!');
-      microbit.writeLedMatrixState(clear());
 
       // disconnect
       setTimeout(_ => {
+        microbit.writeLedMatrixState(clear());
         microbit.disconnect(_ => {
           console.log('👋  Bye-bye\n');
           process.exit(1);
