@@ -24,15 +24,16 @@ $ microclicker
 🔎🖱  micro:clicker
 
 🔮  Scanning for micro:bit...
+    Hold your micro:bit level!
+
 🤖  micro:bit found!
 
 🔌  Connecting to micro:bit
 🤖  micro:bit connected!
      ➡️  Press right arrow to move right.
-
      ⬅️  Press left arrow to move left.
-
    ⬅️ ➡️ ️ Hold both buttons to disconnect.
+    🔀  Tilt up to show current progress in slides.
 ```
 
 > i'm also using the [mi:power accessory](https://www.amazon.co.uk/MI-power-board-BBC-micro/dp/B01JP47T46) to make it more compact and a buzzer sound for fun

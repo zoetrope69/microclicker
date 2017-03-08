@@ -28,6 +28,7 @@ console.info('🔎 🖱️  micro:clicker\n');
 
 function connectToMicrobit() {
   console.info('🔮  Scanning for micro:bit...');
+  console.info('    Hold your micro:bit level!\n');
   BBCMicrobit.discover(microbitDiscovered => {
     console.info(`🤖  micro:bit found!\n`);
     microbit = microbitDiscovered;
@@ -42,7 +43,7 @@ function connectToMicrobit() {
       console.info('     ➡️️  Press right arrow to move right.');
       console.info('     ⬅️  Press left arrow to move left.');
       console.info('   ⬅️ ➡️ ️ Hold both buttons to disconnect.');
-      console.info('     🔀  Tilt up to show current progress in slides.\n');
+      console.info('    🔀  Tilt up to show current progress in slides.\n');
 
       // listen for button presses
       microbit.on('buttonAChange', value => handleButton('left', BUTTON_ACTIONS[value]));
