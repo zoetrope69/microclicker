@@ -34,38 +34,56 @@ function clear() {
   ]);
 }
 
-function drawArrow(direction) {
-  const arrows = {
-    left: [
+function drawPattern(name) {
+  name = name || 'noiseOne';
+  const patterns = {
+    'left': [
       0, 0, 1, 0, 0,
       0, 1, 1, 0, 0,
-      1, 1, 1, 0, 0,
+      1, 1, 0, 0, 0,
       0, 1, 1, 0, 0,
       0, 0, 1, 0, 0,
     ],
-    right: [
+    'right': [
       0, 0, 1, 0, 0,
       0, 0, 1, 1, 0,
-      0, 0, 1, 1, 1,
+      0, 0, 0, 1, 1,
       0, 0, 1, 1, 0,
+      0, 0, 1, 0, 0,
+    ],
+    'noiseOne': [
+      0, 1, 0, 1, 0,
+      1, 0, 1, 0, 1,
+      0, 1, 0, 1, 0,
+      1, 0, 1, 0, 1,
+      0, 1, 0, 1, 0,
+    ],
+    'noiseTwo': [
+      1, 0, 1, 0, 1,
+      0, 1, 0, 1, 0,
+      1, 0, 1, 0, 1,
+      0, 1, 0, 1, 0,
+      1, 0, 1, 0, 1,
+    ],
+    'diamond': [
+      0, 0, 1, 0, 0,
+      0, 1, 0, 1, 0,
+      1, 0, 0, 0, 1,
+      0, 1, 0, 1, 0,
+      0, 0, 1, 0, 0,
+    ],
+    'heart': [
+      0, 1, 0, 1, 0,
+      1, 0, 1, 0, 1,
+      1, 0, 0, 0, 1,
+      0, 1, 0, 1, 0,
       0, 0, 1, 0, 0,
     ]
-  }
-
-  return createLedMatrixBuffer(arrows[direction]);
+  };
+  return createLedMatrixBuffer(patterns[name]);
 }
 
-function drawPattern() {
-  return createLedMatrixBuffer([
-    1, 0, 1, 0, 1,
-    0, 1, 0, 1, 0,
-    1, 0, 1, 0, 1,
-    0, 1, 0, 1, 0,
-    1, 0, 1, 0, 1,
-  ]);
-}
-
-function drawProgess(amount) {
+function drawProgress(amount) {
   const binaryArray = [];
   let ledsOn = amount;
 
@@ -88,8 +106,7 @@ function drawProgess(amount) {
 
 module.exports = {
   clear,
-  drawArrow,
   drawPattern,
-  drawProgess,
+  drawProgress,
   MATRIX_SIZE
 };

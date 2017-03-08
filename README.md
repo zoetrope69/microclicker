@@ -33,7 +33,7 @@ $ microclicker
    ⬅️ ➡️ ️ Hold both buttons to disconnect.
 ```
 
-> i'm also using the [mi:power accessory](https://www.amazon.co.uk/MI-power-board-BBC-micro/dp/B01JP47T46) to make it more compact!
+> i'm also using the [mi:power accessory](https://www.amazon.co.uk/MI-power-board-BBC-micro/dp/B01JP47T46) to make it more compact and a buzzer sound for fun
 
 ## development
 
