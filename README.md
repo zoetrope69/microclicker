@@ -7,8 +7,10 @@ _🔎🖱️ use the bbc micro:bit as a slide clicker_
 
 ## installation
 
-1. [follow instructions to install `bbc-microbit`](https://github.com/sandeepmistry/node-bbc-microbit#prerequisites)
-2. install microclicker globally with npm
+#### 1. [follow instructions to install `bbc-microbit`](https://github.com/sandeepmistry/node-bbc-microbit#prerequisites)
+> Make sure to follow the instructions for `noble` too.
+
+#### 2. install microclicker globally with npm
 ```
 npm install microclicker --global
 ```
